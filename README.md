@@ -68,3 +68,15 @@ All manifests are in *~/_infra/manifests*. Bash scripts in *~/_infra* are used t
 `cd _infra`
 
 `./k8-newrelic.sh -c`
+
+## Deploy all services
+
+`cd _infra`
+
+`./k8-services.sh -c`
+
+## Deploy loader
+
+`cd _infra`
+
+`./k8-loader.sh -c`
