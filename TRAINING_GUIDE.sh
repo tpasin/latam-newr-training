@@ -78,7 +78,7 @@ git config --global user.email "${GITHUB_USER_EMAIL}"
 
 cd ~ && git clone "http://github.com/${GITHUB_USER}/${GITHUB_REPO}"
 cd ~/${GITHUB_REPO}
-git checkout --track origin/S09-kubernetes-setup
+git checkout --track origin/S10-kubernetes-deployment
 
 #
 # ATTENTION: WE NEED TO CHANGE THE ACTIVE BRANCH HERE
@@ -144,3 +144,17 @@ cd ~/${GITHUB_REPO}
 . env.sh
 cd ~/${GITHUB_REPO}/_infra
 ./k8-newrelic.sh -c
+
+# deploy the microservices
+
+cd ~/${GITHUB_REPO}
+. env.sh
+cd ~/${GITHUB_REPO}/_infra
+./k8-services.sh -c
+
+# deploy the loader (double check if the PUBLIC_URL variable is set)
+
+cd ~/${GITHUB_REPO}
+. env.sh
+cd ~/${GITHUB_REPO}/_infra
+./k8-loader.sh -c
