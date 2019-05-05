@@ -58,3 +58,13 @@ The store front is available on [http://localhost:8888](http://localhost:8888)
 ## Stop
 
 `docker-compose down`
+
+# Kubernetes Deployment
+
+All manifests are in *~/_infra/manifests*. Bash scripts in *~/_infra* are used to create, apply or delete manifests.
+
+## Deploy New Relic Kubernetes Agent
+
+`cd _infra`
+
+`./k8-newrelic.sh -c`
