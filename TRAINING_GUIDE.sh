@@ -78,7 +78,7 @@ git config --global user.email "${GITHUB_USER_EMAIL}"
 
 cd ~ && git clone "http://github.com/${GITHUB_USER}/${GITHUB_REPO}"
 cd ~/${GITHUB_REPO}
-git checkout --track origin/S04-payment-service-instrumented
+git checkout --track origin/S05-shipping-service-instrumented
 
 #
 # ATTENTION: WE NEED TO CHANGE THE ACTIVE BRANCH HERE
