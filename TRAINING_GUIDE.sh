@@ -78,7 +78,7 @@ git config --global user.email "${GITHUB_USER_EMAIL}"
 
 cd ~ && git clone "http://github.com/${GITHUB_USER}/${GITHUB_REPO}"
 cd ~/${GITHUB_REPO}
-git checkout --track origin/S10-kubernetes-deployment
+git checkout --track origin/S11-storage-instrumented
 
 #
 # ATTENTION: WE NEED TO CHANGE THE ACTIVE BRANCH HERE
@@ -143,7 +143,7 @@ kubectl get pods --all-namespaces --no-headers -o custom-columns=":metadata.name
 cd ~/${GITHUB_REPO}
 . env.sh
 cd ~/${GITHUB_REPO}/_infra
-./k8-newrelic.sh -c
+./k8-newrelic.sh -c "${YOUR_NAME}"
 
 # deploy the microservices
 
