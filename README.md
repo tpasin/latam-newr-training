@@ -35,6 +35,9 @@ Create a .env file from env.template and set these variables:
 
 - PUBLIC_URL=http://docker-for-desktop:8888
 
+- NEW_RELIC_LICENSE_KEY=
+- CLUSTER_NAME=local
+
 ## Build
 
 `. env.sh`
