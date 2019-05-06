@@ -12,6 +12,7 @@
     - Clone the application (locally)
     - Create the EC2 instance
         - Amazon Linux
+        - t2.large
         - 24Gb Storage
     - Configure the EC2 instance
     - Clone and build the application
