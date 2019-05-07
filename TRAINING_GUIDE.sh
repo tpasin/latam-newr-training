@@ -67,8 +67,8 @@ ssh-keygen -q -t rsa -N "${SSH_KEY_PASSPHRASE}" -f /home/ec2-user/.ssh/id_rsa
 # configure git
 
 export GITHUB_USER='ThyWoof'
-export GITHUB_USER_NAME='Paulo Monteiro'
-export GITHUB_USER_EMAIL='pauloesquilo@gmail.com'
+export GITHUB_USER_NAME='Winston Wolfe'
+export GITHUB_USER_EMAIL='Winston.Wolfe@marsellus.inc.com'
 export GITHUB_REPO=latam-newr-training
 
 git config --global user.name "${GITHUB_USER_NAME}"
@@ -78,15 +78,15 @@ git config --global user.email "${GITHUB_USER_EMAIL}"
 
 cd ~ && git clone "http://github.com/${GITHUB_USER}/${GITHUB_REPO}"
 cd ~/${GITHUB_REPO}
-git checkout --track origin/S01-cart-service-instrumented
 
 #
 # ATTENTION: WE NEED TO CHANGE THE ACTIVE BRANCH HERE
 #
 
+git checkout --track origin/S00-no-instrumentation
+
 # build all services
 
-. env.sh
 docker-compose build
 
 # bring the services up
