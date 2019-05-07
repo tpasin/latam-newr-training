@@ -78,15 +78,15 @@ git config --global user.email "${GITHUB_USER_EMAIL}"
 
 cd ~ && git clone "http://github.com/${GITHUB_USER}/${GITHUB_REPO}"
 cd ~/${GITHUB_REPO}
-git checkout --track origin/S00-no-instrumentation
 
 #
 # ATTENTION: WE NEED TO CHANGE THE ACTIVE BRANCH HERE
 #
 
+git checkout --track origin/S00-no-instrumentation
+
 # build all services
 
-. env.sh
 docker-compose build
 
 # bring the services up
