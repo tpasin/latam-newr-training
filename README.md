@@ -33,7 +33,7 @@ Create a .env file from env.template and set these variables:
 - DOCKERHUB_USER=YOUR_USER_NAME
 - TAG=latest
 
-- PUBLIC_URL=http://docker-for-desktop:8888
+- PUBLIC_URL=http://YOUR_INSTANCE_DNS:8888
 
 ## Build
 
@@ -48,7 +48,7 @@ Create a .env file from env.template and set these variables:
 There is a loader container that will start producing some backend traffic.
 
 ## Access the Store
-The store front is available on [http://localhost:8888](http://localhost:8888)
+The store front is available on [http://YOUR_INSTANCE_DNS:8888](http://localhost:8888)
 
 ## Stop
 
