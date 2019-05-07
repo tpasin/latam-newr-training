@@ -131,7 +131,7 @@ sudo mv heptio-authenticator-aws /usr/local/bin
 export AWS_REGION='us-west-2'
 
 mkdir ~/.aws
-printf "[default]\noutput = json\nregion = ${AWS_REGION}\n" > .aws/config
+printf "[default]\noutput = json\nregion = ${AWS_REGION}\n" > ~/.aws/config
 aws configure
 
 # install eksctl
