@@ -53,7 +53,7 @@ Create a .env file from env.template and set these variables:
 There is a loader container that will start producing some backend traffic.
 
 ## Access the Store
-The store front is available on [http://localhost:8888](http://localhost:8888)
+The store front is available on [http://YOUR_INSTANCE_DNS:8888](http://localhost:8888)
 
 ## Stop
 
@@ -80,3 +80,7 @@ All manifests are in *~/_infra/manifests*. Bash scripts in *~/_infra* are used t
 `cd _infra`
 
 `./k8-loader.sh -c`
+
+## Access the Store
+The store front is available on [http://YOUR_LOAD_BALANCER_DNS:8080](http://localhost:8080)
+
