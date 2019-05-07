@@ -83,12 +83,6 @@ git config --global user.email "${GITHUB_USER_EMAIL}"
 cd ~ && git clone "http://github.com/${GITHUB_USER}/${GITHUB_REPO}"
 cd ~/${GITHUB_REPO}
 
-#
-# ATTENTION: WE NEED TO CHANGE THE ACTIVE BRANCH HERE
-#
-
-git checkout --track origin/S08-web-service-instrumented
-
 # build all services
 
 docker-compose build
@@ -108,6 +102,12 @@ docker-compose down
 #
 # PART 3 - Kubernetes setup
 #
+
+# publish your fully instrumented images
+cd ~/${GITHUB_REPO}
+docker login
+docker-compose build # just in case :-)
+docker-compose push
 
 # source the variables
 
