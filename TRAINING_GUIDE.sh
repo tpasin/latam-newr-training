@@ -87,7 +87,7 @@ cd ~/${GITHUB_REPO}
 # ATTENTION: WE NEED TO CHANGE THE ACTIVE BRANCH HERE
 #
 
-git checkout --track origin/S08-web-service-instrumented
+git checkout --track origin/S11-storage-instrumented
 
 # build all services
 
@@ -108,6 +108,12 @@ docker-compose down
 #
 # PART 3 - Kubernetes setup
 #
+
+# publish your fully instrumented images
+cd ~/${GITHUB_REPO}
+docker login
+docker-compose build # just in case :-)
+docker-compose push
 
 # source the variables
 
