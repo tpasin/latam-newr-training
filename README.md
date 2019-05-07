@@ -25,33 +25,31 @@ Setup a free-tier EC2 Amazon Linux instance with 24Gb storage and follow the ins
 
 ## Setup your .env file
 Create a .env file from env.template and set these variables:
-- GITHUB_USER=YOUR_USER_NAME
+- GITHUB_USER=
 - GITHUB_USER_NAME='FIRST_NAME LAST_NAME'
-- GITHUB_USER_EMAIL=YOUR_EMAIL
+- GITHUB_USER_EMAIL=
 - GITHUB_REPO=latam-newr-training
 
-- DOCKERHUB_USER=YOUR_USER_NAME
+- DOCKERHUB_USER=
 - TAG=latest
 
-- PUBLIC_URL=http://docker-for-desktop:8888
+- PUBLIC_URL=http://YOUR_INSTANCE_DNS:8888
 
 - NEW_RELIC_LICENSE_KEY=
 - CLUSTER_NAME=local
 
 ## Build
 
-`. env.sh`
-
 `docker-compose build`
 
 ## Run
 
-`docker-compose up- d`
+`docker-compose up -d`
 
-There is a loader container that will start producing some backend traffic.
+There is a loader container that produces some backend traffic.
 
 ## Access the Store
-The store front is available on [http://localhost:8888](http://localhost:8888)
+The store front is available on [http://YOUR_INSTANCE_DNS:8888](http://localhost:8888)
 
 ## Stop
 
