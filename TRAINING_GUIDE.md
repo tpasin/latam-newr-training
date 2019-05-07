@@ -7,19 +7,30 @@
     - Create a New Relic account
     - Install Visual Studio Code
     - Install Git (windows)
+    - Clone the repository on your local computer
+    - Open the repository in Visual Studio Code
 
-2. Docker (TRAINING_GUIDE.sh, part 1)
-    - Clone the application (locally)
+2. EC2 instance setup (TRAINING_GUIDE.sh, part 1)
     - Create the EC2 instance
         - Amazon Linux
-        - t2.large
+        - t2.medium
         - 24Gb Storage
     - Configure the EC2 instance
-    - Clone and build the application
-    - Explain the application structure
-    - Run the application
+    
+3. Observability in New Relic, part 1
+    - Check data on INFRASTRUCTURE
+        - Hosts
+        - Events
+        - Inventory
+    
+4. Docker setup (TRAINING_GUIDE.sh, part 2)
+    - Explain the repository structure
+    - Explain the application structure (PPT slide and docker-compose.yaml)
+    - Clone the repository
+    - Branch back in time
+    - Build / Run the application
 
-3. Instrumentation (services)
+5. Instrumentation (services)
     - Node.JS
         - cart
         - catalogue
@@ -35,13 +46,21 @@
     - Angular.JS
         - web
 
-4. Observability in New Relic, part 1
-    - Check data on APM
-    - Check data on BROWSER
+4. Observability in New Relic, part 2
     - Check data on INSIGHTS
+        - custom attributes
+        - custom events
+    - Check data on APM
+        - distributed tracing
+        - error analytics
+    - Check data on BROWSER
+        - traces
+        - js errors
     - Check data on INFRASTRUCTURE
+        - processes
+        - container attributes
 
-5. Kubernetes Setup (TRAINING_GUIDE.sh, part 2)
+5. Kubernetes Setup (TRAINING_GUIDE.sh, part 3)
     - Push the images
     - Create the EKS cluster
 
@@ -54,9 +73,9 @@
         - Redis
     - Deploy manifests
 
-7. Observability in New Relic, part 2
+7. Observability in New Relic, part 3
     - Check data on INFRASTRUCTURE
-    - Navigate the Kubernetes Cluster
-    - Navigate the 4 on-host integrations (MySQL, MongoDB, Redis, RabbitMQ)
+        - Kubernetes Cluster Explorer
+        - On Host Integrations Dashboards
     - Setup Alerts
-    - Create Dashboards
+    - Create Insights Dashboards
