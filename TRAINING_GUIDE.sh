@@ -58,6 +58,10 @@ sudo usermod -aG docker ec2-user
 
 exit
 
+#
+# PART 2 - CLONE, BUILD, DEPLOY THE APPLICATION
+#
+
 # create an SSH key
 
 export SSH_KEY_PASSPHRASE='I-will-be-medieval-on-your-SaaS'
@@ -67,8 +71,8 @@ ssh-keygen -q -t rsa -N "${SSH_KEY_PASSPHRASE}" -f /home/ec2-user/.ssh/id_rsa
 # configure git
 
 export GITHUB_USER='ThyWoof'
-export GITHUB_USER_NAME='Paulo Monteiro'
-export GITHUB_USER_EMAIL='pauloesquilo@gmail.com'
+export GITHUB_USER_NAME='Winston Wolfe'
+export GITHUB_USER_EMAIL='Winston.Wolfe@marsellus.inc.com'
 export GITHUB_REPO=latam-newr-training
 
 git config --global user.name "${GITHUB_USER_NAME}"
@@ -78,15 +82,15 @@ git config --global user.email "${GITHUB_USER_EMAIL}"
 
 cd ~ && git clone "http://github.com/${GITHUB_USER}/${GITHUB_REPO}"
 cd ~/${GITHUB_REPO}
-git checkout --track origin/S11-storage-instrumented
 
 #
 # ATTENTION: WE NEED TO CHANGE THE ACTIVE BRANCH HERE
 #
 
+git checkout --track origin/S02-catalogue-service-instrumented
+
 # build all services
 
-. env.sh
 docker-compose build
 
 # bring the services up
@@ -94,67 +98,9 @@ docker-compose build
 docker-compose up -d
 
 #
-# OPEN AWS CONSOLE and make port 8080 public on your EC2 instance
+# OPEN AWS CONSOLE and make port 8888 public on your EC2 instance
 #
 
 # WHEN DONE bring the services down 
 
 docker-compose down
-
-#
-# PART 2 - Kubernetes setup
-#
-
-# install kubectl
-
-curl -sLO https://amazon-eks.s3-us-west-2.amazonaws.com/1.11.5/2018-12-06/bin/linux/amd64/kubectl
-chmod +x kubectl
-sudo mv kubectl /usr/local/bin
-
-# install heptio-authenticator-aws
-
-curl -sLo heptio-authenticator-aws https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.3.0/heptio-authenticator-aws_0.3.0_linux_amd64
-chmod +x heptio-authenticator-aws
-sudo mv heptio-authenticator-aws /usr/local/bin
-
-# configure the AWS cli
-
-export YOUR_AWS_REGION='us-west-2'
-
-mkdir ~/.aws
-printf "[default]\noutput = json\nregion = ${YOUR_AWS_REGION}\n" > .aws/config
-aws configure
-
-# install eksctl
-
-curl -sL "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-sudo mv /tmp/eksctl /usr/local/bin
-
-# create the basic EKS cluster (when done consider saving ~/.kube/config to a safe place)
-
-eksctl create cluster --region=${YOUR_AWS_REGION} --name=${YOUR_CLUSTER_NAME}
-
-# check if everything is sound
-
-kubectl get pods --all-namespaces --no-headers -o custom-columns=":metadata.name,:metadata.namespace"
-
-# deploy the New Relic agents
-
-cd ~/${GITHUB_REPO}
-. env.sh
-cd ~/${GITHUB_REPO}/_infra
-./k8-newrelic.sh -c "${YOUR_NAME}"
-
-# deploy the microservices
-
-cd ~/${GITHUB_REPO}
-. env.sh
-cd ~/${GITHUB_REPO}/_infra
-./k8-services.sh -c
-
-# deploy the loader (double check if the PUBLIC_URL variable is set)
-
-cd ~/${GITHUB_REPO}
-. env.sh
-cd ~/${GITHUB_REPO}/_infra
-./k8-loader.sh -c
