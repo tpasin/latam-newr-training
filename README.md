@@ -35,6 +35,9 @@ Create a .env file from env.template and set these variables:
 
 - PUBLIC_URL=http://YOUR_INSTANCE_DNS:8888
 
+- NEW_RELIC_LICENSE_KEY=
+- CLUSTER_NAME=local
+
 ## Build
 
 `docker-compose build`
