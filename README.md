@@ -84,3 +84,34 @@ All manifests are in *~/_infra/manifests*. Bash scripts in *~/_infra* are used t
 ## Access the Store
 The store front is available on [http://YOUR_LOAD_BALANCER_DNS:8080](http://localhost:8080)
 
+# Additional Commands
+
+force a build:
+
+```sh
+$ docker-compose build --no-cache
+```
+
+stop all containers:
+
+```sh
+$ docker container stop $(docker container ls -aq)
+```
+
+remove all containers:
+
+```sh
+$ docker container rm $(docker container ls -aq)
+```
+
+remove all images:
+
+```sh
+$ docker rmi $(docker images -q)
+```
+
+recover space:
+
+```sh
+$ docker system prune --volumes
+```
