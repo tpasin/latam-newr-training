@@ -41,7 +41,7 @@ Create a .env file from env.template and set these variables:
 
 ## Run
 
-`docker-compose up- d`
+`docker-compose up -d`
 
 There is a loader container that produces some backend traffic.
 
