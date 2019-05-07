@@ -58,6 +58,10 @@ sudo usermod -aG docker ec2-user
 
 exit
 
+#
+# PART 2 - CLONE, BUILD, DEPLOY THE APPLICATION
+#
+
 # create an SSH key
 
 export SSH_KEY_PASSPHRASE='I-will-be-medieval-on-your-SaaS'
@@ -67,8 +71,8 @@ ssh-keygen -q -t rsa -N "${SSH_KEY_PASSPHRASE}" -f /home/ec2-user/.ssh/id_rsa
 # configure git
 
 export GITHUB_USER='ThyWoof'
-export GITHUB_USER_NAME='Paulo Monteiro'
-export GITHUB_USER_EMAIL='pauloesquilo@gmail.com'
+export GITHUB_USER_NAME='Winston Wolfe'
+export GITHUB_USER_EMAIL='Winston.Wolfe@marsellus.inc.com'
 export GITHUB_REPO=latam-newr-training
 
 git config --global user.name "${GITHUB_USER_NAME}"
@@ -78,15 +82,15 @@ git config --global user.email "${GITHUB_USER_EMAIL}"
 
 cd ~ && git clone "http://github.com/${GITHUB_USER}/${GITHUB_REPO}"
 cd ~/${GITHUB_REPO}
-git checkout --track origin/S08-web-service-instrumented
 
 #
 # ATTENTION: WE NEED TO CHANGE THE ACTIVE BRANCH HERE
 #
 
+git checkout --track origin/S08-web-service-instrumented
+
 # build all services
 
-. env.sh
 docker-compose build
 
 # bring the services up
@@ -94,7 +98,7 @@ docker-compose build
 docker-compose up -d
 
 #
-# OPEN AWS CONSOLE and make port 8080 public on your EC2 instance
+# OPEN AWS CONSOLE and make port 8888 public on your EC2 instance
 #
 
 # WHEN DONE bring the services down 
