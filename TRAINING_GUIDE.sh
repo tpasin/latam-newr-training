@@ -67,8 +67,8 @@ ssh-keygen -q -t rsa -N "${SSH_KEY_PASSPHRASE}" -f /home/ec2-user/.ssh/id_rsa
 # configure git
 
 export GITHUB_USER='ThyWoof'
-export GITHUB_USER_NAME='Paulo Monteiro'
-export GITHUB_USER_EMAIL='pauloesquilo@gmail.com'
+export GITHUB_USER_NAME='Winston Wolfe'
+export GITHUB_USER_EMAIL='Winston.Wolfe@marsellus.inc.com'
 export GITHUB_REPO=latam-newr-training
 
 git config --global user.name "${GITHUB_USER_NAME}"
