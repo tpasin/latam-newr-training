@@ -36,6 +36,8 @@ Create a .env file from env.template and set these variables:
 - PUBLIC_URL=http://YOUR_INSTANCE_DNS:8888
 
 - NEW_RELIC_LICENSE_KEY=
+- NEW_RELIC_BROWSER_LICENSE_KEY=
+- NEW_RELIC_BROWSER_APPLICATION_ID=
 - CLUSTER_NAME=local
 
 ## Build
