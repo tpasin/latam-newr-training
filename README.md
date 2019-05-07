@@ -33,7 +33,7 @@ Create a .env file from env.template and set these variables:
 - DOCKERHUB_USER=YOUR_USER_NAME
 - TAG=latest
 
-- PUBLIC_URL=http://docker-for-desktop:8888
+- PUBLIC_URL=http://YOUR_INSTANCE_DNS:8888
 
 - NEW_RELIC_LICENSE_KEY=
 - NEW_RELIC_BROWSER_LICENSE_KEY=
@@ -58,60 +58,3 @@ The store front is available on [http://YOUR_INSTANCE_DNS:8888](http://localhost
 ## Stop
 
 `docker-compose down`
-
-# Kubernetes Deployment
-
-All manifests are in *~/_infra/manifests*. Bash scripts in *~/_infra* are used to create, apply or delete manifests.
-
-## Deploy New Relic Kubernetes Agent
-
-`cd _infra`
-
-`./k8-newrelic.sh -c`
-
-## Deploy all services
-
-`cd _infra`
-
-`./k8-services.sh -c`
-
-## Deploy loader
-
-`cd _infra`
-
-`./k8-loader.sh -c`
-
-## Access the Store
-The store front is available on [http://YOUR_LOAD_BALANCER_DNS:8080](http://localhost:8080)
-
-# Additional Commands
-
-force a build:
-
-```sh
-$ docker-compose build --no-cache
-```
-
-stop all containers:
-
-```sh
-$ docker container stop $(docker container ls -aq)
-```
-
-remove all containers:
-
-```sh
-$ docker container rm $(docker container ls -aq)
-```
-
-remove all images:
-
-```sh
-$ docker rmi $(docker images -q)
-```
-
-recover space:
-
-```sh
-$ docker system prune --volumes
-```
