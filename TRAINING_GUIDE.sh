@@ -58,6 +58,10 @@ sudo usermod -aG docker ec2-user
 
 exit
 
+#
+# PART 2 - CLONE, BUILD, DEPLOY THE APPLICATION
+#
+
 # create an SSH key
 
 export SSH_KEY_PASSPHRASE='I-will-be-medieval-on-your-SaaS'
@@ -83,7 +87,7 @@ cd ~/${GITHUB_REPO}
 # ATTENTION: WE NEED TO CHANGE THE ACTIVE BRANCH HERE
 #
 
-git checkout --track origin/S00-no-instrumentation
+git checkout --track origin/S01-cart-service-instrumented
 
 # build all services
 
@@ -94,7 +98,7 @@ docker-compose build
 docker-compose up -d
 
 #
-# OPEN AWS CONSOLE and make port 8080 public on your EC2 instance
+# OPEN AWS CONSOLE and make port 8888 public on your EC2 instance
 #
 
 # WHEN DONE bring the services down 
