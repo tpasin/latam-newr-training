@@ -17,68 +17,88 @@ This sample microservice application has been built using these technologies:
 - Nginx
 - AngularJS
 
-# (optional) use an EC2 instance
+# Fork this repository
 
-Setup a free-tier EC2 Amazon Linux instance with 24Gb storage and follow the instructions in *TRAINING_GUIDE.sh* to have a working Docker enviroment you can play with. Don't forget to open port 8888 to the world and change the *PUBLIC_URL* to the EC2 instance DNS.
+# Setup your playground EC2 instance
+
+1. Setup an EC2 Amazon Linux instance with these properties:
+    - t2.medium
+    - 24Gb disk
+2. Connect to the instance
+3. Make a copy of *setup-ec2-instance.sh* and set the required variables:
+    - YOUR_NAME
+    - YOUR_COMPANY_NAME
+    - NEW_RELIC_LICENSE_KEY
+4. Copy and paste the changed content on the EC2 terminal
+5. Open port 8888 on EC2 instance to the world (tip: edit instance security group inbound rules)
+6. Take a note of the instance hostname (we need this value to set the PUBLIC_URL variable in .env)
+
+# Clone your repository
+
+1. Make a copy of *setup-ec2-instance.sh* and set the required variables:
+    - GITHUB_USER
+    - GITHUB_USER_NAME
+    - GITHUB_USER_EMAIL
+    - GITHUB_REPO
+2. Copy and paste the changed content on the EC2 terminal
+3. Edit *.env* and set the required variables:
+    - GITHUB_USER
+    - GITHUB_USER_NAME
+    - GITHUB_USER_EMAIL
+    - GITHUB_REPO
+    - DOCKERHUB_USER
+    - TAG=latest
+    - PUBLIC_URL=http://*YOUR_INSTANCE_HOSTNAME*:8888
+    - NEW_RELIC_LICENSE_KEY
+    - CLUSTER_NAME=local
+    - NEW_RELIC_BROWSER_LICENSE_KEY
+    - NEW_RELIC_BROWSER_APPLICATION_ID
+4. Change the repository to the desired training step
+
+    `git branch -a`
+
+    `git checkout --track <branch name>`
+
+    Example:
+    
+    `git checkout --track origin/S00-no-instrumentation`
 
 # Docker Deployment
 
-## Setup your .env file
-Create a .env file from env.template and set these variables:
-- GITHUB_USER=
-- GITHUB_USER_NAME='FIRST_NAME LAST_NAME'
-- GITHUB_USER_EMAIL=
-- GITHUB_REPO=latam-newr-training
+1. Build all services
 
-- DOCKERHUB_USER=
-- TAG=latest
+    `docker-compose build`
 
-- PUBLIC_URL=http://YOUR_INSTANCE_DNS:8888
+2. Bring all services up
 
-- NEW_RELIC_LICENSE_KEY=
-- CLUSTER_NAME=local
+    `docker-compose up -d`
 
-- NEW_RELIC_BROWSER_LICENSE_KEY=
-- NEW_RELIC_BROWSER_APPLICATION_ID=
+3. Check loader service
 
-## Build
+    `docker container ls`
 
-`docker-compose build`
+    Take note of the loader container id and use below
 
-## Run
+    `docker logs <container id> -f`
 
-`docker-compose up -d`
+    Output should show a sequence of API calls across all services. Double-check PUBLIC_URL in .env if there is any error output.
 
-There is a loader container that produces some backend traffic.
+# Access the Store
 
-## Access the Store
-The store front is available on [http://YOUR_INSTANCE_DNS:8888](http://localhost:8888)
+The store front is available on [http://EC2_INSTANCE_PUBLIC_DNS:8888](http://localhost:8888)
 
-## Stop
+# Stop your services
 
 `docker-compose down`
 
 # Kubernetes Deployment
 
-All manifests are in *~/_infra/manifests*. Bash scripts in *~/_infra* are used to create, apply or delete manifests.
+1. Run *setup-eks-cluster.sh* from the repository folder (it might take 15 mins to complete)
+2. Install New Relic Agents
 
-## Deploy New Relic Kubernetes Agent
+    `cd ~/${GITHUB_REPO}/_infra`
 
-`cd _infra`
+    `./k8-newrelic.sh -c`
+3. Deploy services
 
-`./k8-newrelic.sh -c`
-
-## Deploy all services
-
-`cd _infra`
-
-`./k8-services.sh -c`
-
-## Deploy loader
-
-`cd _infra`
-
-`./k8-loader.sh -c`
-
-## Access the Store
-The store front is available on [http://YOUR_LOAD_BALANCER_DNS:8080](http://localhost:8080)
+    `./k8-services.sh -c`
