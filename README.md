@@ -35,7 +35,7 @@ This sample microservice application has been built using these technologies:
 
 # Clone your repository
 
-1. Make a copy of *setup-ec2-instance.sh* and set the required variables:
+1. Make a copy of *setup-repository.sh* and set the required variables:
     - GITHUB_USER
     - GITHUB_USER_NAME
     - GITHUB_USER_EMAIL
