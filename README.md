@@ -50,7 +50,16 @@ This sample microservice application has been built using these technologies:
     - TAG=latest
     - PUBLIC_URL=http://*YOUR_INSTANCE_HOSTNAME*:8888
     - NEW_RELIC_LICENSE_KEY
-    - CLUSTER_NAME=local
+    - CLUSTER_NAME
+4. Change the repository to the desired training step
+
+    `git branch -a`
+
+    `git checkout --track <branch name>`
+
+    Example:
+    
+    `git checkout --track origin/S00-no-instrumentation`
 
 # Docker Deployment
 
