@@ -94,6 +94,10 @@ The store front is available on [http://EC2_INSTANCE_PUBLIC_DNS:8888](http://loc
 # Kubernetes Deployment
 
 1. Run *setup-eks-cluster.sh* from the repository folder (it might take 15 mins to complete)
+
+    `cd ~/${GITHUB_REPO}`
+    `./setup-eks-cluster.sh`
+
 2. Install New Relic Agents
 
     `cd ~/${GITHUB_REPO}/_infra`
