@@ -98,4 +98,4 @@ The store front is available on [http://EC2_INSTANCE_PUBLIC_DNS:8888](http://loc
 
     `cd ~/${GITHUB_REPO}/_infra`
 
-    `./k8-newrelic -c`
+    `./k8-newrelic.sh -c`
