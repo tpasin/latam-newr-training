@@ -49,6 +49,15 @@ This sample microservice application has been built using these technologies:
     - DOCKERHUB_USER
     - TAG=latest
     - PUBLIC_URL=http://*YOUR_INSTANCE_HOSTNAME*:8888
+4. Change the repository to the desired training step
+
+    `git branch -a`
+
+    `git checkout --track <branch name>`
+
+    Example:
+    
+    `git checkout --track origin/S00-no-instrumentation`
 
 # Docker Deployment
 
