@@ -35,7 +35,7 @@ This sample microservice application has been built using these technologies:
 
 # Clone your repository
 
-1. Make a copy of *setup-ec2-instance.sh* and set the required variables:
+1. Make a copy of *setup-repository.sh* and set the required variables:
     - GITHUB_USER
     - GITHUB_USER_NAME
     - GITHUB_USER_EMAIL
@@ -96,6 +96,7 @@ The store front is available on [http://EC2_INSTANCE_PUBLIC_DNS:8888](http://loc
 1. Run *setup-eks-cluster.sh* from the repository folder (it might take 15 mins to complete)
 
     `cd ~/${GITHUB_REPO}`
+    
     `./setup-eks-cluster.sh`
 
 2. Install New Relic Agents
