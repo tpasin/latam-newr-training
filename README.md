@@ -103,6 +103,7 @@ The store front is available on [http://EC2_INSTANCE_PUBLIC_DNS:8888](http://loc
     `cd ~/${GITHUB_REPO}/_infra`
 
     `./k8-newrelic.sh -c`
+    
 3. Deploy services
 
     `./k8-services.sh -c`
