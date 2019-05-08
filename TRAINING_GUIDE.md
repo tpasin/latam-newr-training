@@ -10,12 +10,12 @@
     - Clone the repository on your local computer
     - Open the repository in Visual Studio Code
 
-2. EC2 instance setup (TRAINING_GUIDE.sh, part 1)
+2. EC2 instance setup
     - Create the EC2 instance
         - Amazon Linux
         - t2.medium
         - 24Gb Storage
-    - Configure the EC2 instance
+    - Configure the EC2 instance (setup-ec2-instance.sh)
     
 3. Observability in New Relic, part 1
     - Check data on INFRASTRUCTURE
@@ -23,11 +23,11 @@
         - Events
         - Inventory
     
-4. Docker setup (TRAINING_GUIDE.sh, part 2)
+4. Docker setup
     - Explain the repository structure
     - Explain the application structure (PPT slide and docker-compose.yaml)
-    - Clone the repository
-    - Branch back in time
+    - Configure the repository (setup-repository.sh)
+    - Branch to the desired training step
     - Build / Run the application
 
 5. Instrumentation (services)
@@ -60,9 +60,13 @@
         - processes
         - container attributes
 
-5. Kubernetes Setup (TRAINING_GUIDE.sh, part 3)
-    - Push the images
-    - Create the EKS cluster
+5. Kubernetes Setup
+    - run setup-eks-cluster.sh
+
+6. Kubernetes Deployment
+    - run _infra/k8-newrelic.sh -c
+    - run _infra/k8-services.sh -c
+    - run _infra/k8-loader.sh -c
 
 6. Instrumentation (Infrastructure)
     - Services
