@@ -53,6 +53,7 @@ def pay(id):
     # this will blow up if the cart is not valid
     has_shipping = False
     for item in cart.get('items'):
+        newrelic.agent.add_custom_parameter('price', items)
         if item.get('sku') == 'SHIP':
             has_shipping = True
 
